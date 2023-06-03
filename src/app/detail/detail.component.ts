@@ -33,13 +33,10 @@ export class DetailComponent implements OnInit {
 
   goBack() {
     if (this.content.Type == "movie") {
-      console.log("movie")
       this.router.navigateByUrl('/tabs/movies')
     } else if (this.content.Type == "series") {
-      console.log("serie");
       this.router.navigateByUrl('/tabs/series')
     }
-    console.log("fin")
   }
   
 }
