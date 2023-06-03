@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Movies
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchText" placeholder="Search Movies" show-clear-button="focus"
+    (ionInput)="searchMovies()" (ionClear)="defaultMovies()"></ion-searchbar>
+
+  <ion-text color="danger" *ngIf="errorMessage" class="ion-padding">
+    {{ errorMessage }}
+  </ion-text>
+
+  <ion-list>
+    <ion-item *ngFor="let movie of movies">
+      <ion-thumbnail slot="start">
+        <img [src]="movie.Poster">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ movie.Title }}</h2>
+        <p>Year: {{ movie.Year }}</p>
+      </ion-label>
+      <ion-button fill="outline" slot="end" (click)="openDetails(movie.imdbID)">View Details</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

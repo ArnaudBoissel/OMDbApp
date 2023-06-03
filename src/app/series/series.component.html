@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Series
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchText" placeholder="Search Series" show-clear-button="focus"
+    (ionInput)="searchSeries()" (ionClear)="defaultSeries()"></ion-searchbar>
+
+
+  <ion-text color="danger" *ngIf="errorMessage" class="ion-padding">
+    {{ errorMessage }}
+  </ion-text>
+
+  <ion-list>
+    <ion-item *ngFor="let serie of series">
+      <ion-thumbnail slot="start">
+        <img [src]="serie.Poster">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ serie.Title }}</h2>
+        <p>Year: {{ serie.Year }}</p>
+      </ion-label>
+      <ion-button fill="outline" slot="end" (click)="openDetails(serie.imdbID)">View Details</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
