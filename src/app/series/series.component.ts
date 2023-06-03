@@ -53,6 +53,7 @@ export class SeriesComponent  implements OnInit {
     console.log(id)
     const serieDetailUrl = `/tabs/details/${id}`;
     this.router.navigateByUrl(serieDetailUrl);
+    //this.router.navigate(['/tabs/details', id]);
   }
 
   sortSeries() {

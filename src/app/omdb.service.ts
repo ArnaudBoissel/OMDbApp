@@ -29,23 +29,6 @@ export class OmdbService {
     );
   }
 
-  getMovieDetails(id: string): Observable<any> {
-    const url = `${this.API_URL}?apikey=${this.API_KEY}&i=${id}&r=json&type=movie`;
-    return this.http.get(url)
-    .pipe(
-      map((response: any) => {
-        if (response.Response === 'False') {
-          throw new Error(response.Error);
-        }
-        return response;
-      }),
-      catchError(error => {
-        console.error('Error in OmdbService: ', error);
-        return throwError(error);
-      })
-    );
-  }
-
   defaultMovies(): Observable<any> {
     const url = `${this.API_URL}?apikey=${this.API_KEY}&s=Avatar&page=1&r=json&type=movie`;
     return this.http.get(url)
@@ -80,8 +63,8 @@ export class OmdbService {
     );
   }
 
-  getDetails(id: string): Observable<any> {
-    const url = `${this.API_URL}?apikey=${this.API_KEY}&i=${id}&r=json&type=series`;
+  defaultSeries(): Observable<any> {
+    const url = `${this.API_URL}?apikey=${this.API_KEY}&s=Avatar&page=1&r=json&type=series`;
     return this.http.get(url)
     .pipe(
       map((response: any) => {
@@ -97,8 +80,8 @@ export class OmdbService {
     );
   }
 
-  defaultSeries(): Observable<any> {
-    const url = `${this.API_URL}?apikey=${this.API_KEY}&s=Avatar&page=1&r=json&type=series`;
+  getDetails(id: string): Observable<any> {
+    const url = `${this.API_URL}?apikey=${this.API_KEY}&i=${id}&r=json`;
     return this.http.get(url)
     .pipe(
       map((response: any) => {

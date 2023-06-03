@@ -1,7 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/movies"></ion-back-button>
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>
       {{content.Title}} ({{content.Year}})
@@ -11,7 +13,7 @@
 
 <ion-content>
   <ion-card>
-    <img [src]="content.Poster">
+    <img [src]="content.Poster" class="picture-center">
     <ion-card-header>
       <ion-card-title>{{content.Title}}</ion-card-title>
       <ion-card-subtitle *ngIf="content.Genre != 'N/A'">{{content.Genre}}</ion-card-subtitle>

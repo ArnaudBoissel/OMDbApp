@@ -20,7 +20,6 @@ export class MoviesComponent implements OnInit {
   }
 
   defaultMovies() {
-    console.log("default")
     this.omdbService.defaultMovies().subscribe(
       data => {
         this.movies = data.Search;
@@ -51,7 +50,6 @@ export class MoviesComponent implements OnInit {
   }
 
   openDetails(id: number) {
-    console.log(id)
     const movieDetailUrl = `/tabs/details/${id}`;
     this.router.navigateByUrl(movieDetailUrl);
   }

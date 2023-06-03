@@ -14,7 +14,8 @@ import { SeriesComponent } from './series/series.component';
 import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
-  declarations: [AppComponent, TabsComponent, HomeComponent, MoviesComponent, SeriesComponent, DetailComponent],
+  declarations: [AppComponent, TabsComponent, HomeComponent, MoviesComponent, 
+                SeriesComponent, DetailComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
