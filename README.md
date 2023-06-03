@@ -36,19 +36,3 @@ Please follow these steps to install and run the app:
 ## Troubleshooting
 
 If you encounter any issues while running the app, please check the console logs for any error messages. The most common issues are usually related to API connectivity or routing.
-
-## Future Work
-
-We are constantly working on improving the OMDb Mobile Application by adding new features and improving the existing ones. We appreciate any feedback or suggestions.
-
-## Contribution
-
-Please feel free to contribute to the OMDb Mobile Application by creating a pull request. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-
-OMDb Mobile Application is open source software licensed as [insert license].
-
-## Acknowledgement
-
-We would like to thank the creators of the OMDb API for providing a vast database of movies and series data.
