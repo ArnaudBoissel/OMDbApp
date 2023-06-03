@@ -7,9 +7,21 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar [(ngModel)]="searchText" placeholder="Search Movies" show-clear-button="focus"
-    (ionChange)="searchMovies()" (ionClear)="defaultMovies()"></ion-searchbar>
-   <!-- Could be (ionInput)="searchSeries()", more dynamic, but more request -->
+  <ion-row>
+    <ion-col size="8">
+      <ion-searchbar [(ngModel)]="searchText" placeholder="Search Movies" show-clear-button="focus"
+        (ionChange)="searchMovies()" (ionClear)="defaultMovies()"></ion-searchbar>
+        <!-- Could be (ionInput)="searchSeries()", more dynamic, but more request -->
+    </ion-col>
+    <ion-col size="4">
+      <ion-select [(ngModel)]="sortOrder" (ngModelChange)="sortMovies()" interface="popover">
+        <ion-select-option value="year">Year</ion-select-option>
+        <ion-select-option value="alphabetical">Alphabetical</ion-select-option>
+        <ion-select-option value="rating">Rating</ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  
   <ion-text color="danger" *ngIf="errorMessage" class="ion-padding">
     {{ errorMessage }}
   </ion-text>

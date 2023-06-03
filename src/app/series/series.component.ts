@@ -11,6 +11,7 @@ export class SeriesComponent  implements OnInit {
   series: any[] = [];
   searchText = '';
   errorMessage = '';
+  sortOrder = 'year'; 
 
   constructor(private omdbService: OmdbService, private router: Router) { }
   
@@ -28,6 +29,7 @@ export class SeriesComponent  implements OnInit {
       error => {console.error('Error: ' + error);
       this.errorMessage = 'An error occurred while fetching default series';
     });
+    this.sortSeries()
   }
 
   searchSeries() {
@@ -44,6 +46,7 @@ export class SeriesComponent  implements OnInit {
         console.error('Error: ' + error);
         this.errorMessage = 'No results found';
       });
+      this.sortSeries()
   }
 
   openDetails(id: number) {
@@ -52,4 +55,14 @@ export class SeriesComponent  implements OnInit {
     this.router.navigateByUrl(serieDetailUrl);
   }
 
+  sortSeries() {
+    if (this.sortOrder === 'year') {
+      this.series.sort((a, b) => b.Year - a.Year);
+      //this.series.sort((a, b) => (a.Year > b.Year) ? 1 : -1);
+    } else if (this.sortOrder === 'alphabetical') {
+      this.series.sort((a, b) => (a.Title > b.Title) ? 1 : -1);
+    } else if (this.sortOrder === 'rating') {
+      this.series.sort((a, b) => (a.imdbRating > b.imdbRating) ? 1 : -1);
+    }
+  }
 }

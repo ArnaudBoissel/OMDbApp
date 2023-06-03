@@ -11,6 +11,7 @@ export class MoviesComponent implements OnInit {
   movies: any[] = [];
   searchText = '';
   errorMessage = '';
+  sortOrder = 'year'; 
 
   constructor(private omdbService: OmdbService, private router: Router) { }
 
@@ -29,6 +30,7 @@ export class MoviesComponent implements OnInit {
         console.error('Error: ' + error);
         this.errorMessage = 'An error occurred while fetching default movies';
       });
+      this.sortMovies()
   }
 
   searchMovies() {
@@ -45,6 +47,7 @@ export class MoviesComponent implements OnInit {
         console.error('Error: ' + error);
         this.errorMessage = 'No results found';
       });
+      this.sortMovies()
   }
 
   openDetails(id: number) {
@@ -52,5 +55,17 @@ export class MoviesComponent implements OnInit {
     const movieDetailUrl = `/tabs/details/${id}`;
     this.router.navigateByUrl(movieDetailUrl);
   }
+
+  sortMovies() {
+    if (this.sortOrder === 'year') {
+      this.movies.sort((a, b) => b.Year - a.Year);
+      //this.movies.sort((a, b) => (a.Year > b.Year) ? 1 : -1);
+    } else if (this.sortOrder === 'alphabetical') {
+      this.movies.sort((a, b) => (a.Title > b.Title) ? 1 : -1);
+    } else if (this.sortOrder === 'rating') {
+      this.movies.sort((a, b) => (a.imdbRating > b.imdbRating) ? 1 : -1);
+    }
+  }
+  
 
 }
