@@ -47,9 +47,10 @@ export class MoviesComponent implements OnInit {
       });
   }
 
-  openDetails(data: any) {
-    console.log(data)
-    this.router.navigate(['/details', data.imdbID]);
+  openDetails(id: number) {
+    console.log(id)
+    const movieDetailUrl = `/tabs/details/${id}`;
+    this.router.navigateByUrl(movieDetailUrl);
   }
 
 }

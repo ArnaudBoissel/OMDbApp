@@ -8,8 +8,8 @@
 
 <ion-content>
   <ion-searchbar [(ngModel)]="searchText" placeholder="Search Movies" show-clear-button="focus"
-    (ionInput)="searchMovies()" (ionClear)="defaultMovies()"></ion-searchbar>
-
+    (ionChange)="searchMovies()" (ionClear)="defaultMovies()"></ion-searchbar>
+   <!-- Could be (ionInput)="searchSeries()", more dynamic, but more request -->
   <ion-text color="danger" *ngIf="errorMessage" class="ion-padding">
     {{ errorMessage }}
   </ion-text>
