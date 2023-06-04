@@ -16,6 +16,7 @@ export class DetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private omdbService: OmdbService, private router: Router) { }
 
   ngOnInit() {
+    console.log("init detail")
     const id = this.route.snapshot.paramMap.get('id');
     this.imdbID = id !== null ? id : this.imdbID;
     this.getDetails();
@@ -32,11 +33,12 @@ export class DetailComponent implements OnInit {
   }
 
   goBack() {
-    if (this.content.Type == "movie") {
+    /*if (this.content.Type == "movie") {
       this.router.navigateByUrl('/tabs/movies')
     } else if (this.content.Type == "series") {
       this.router.navigateByUrl('/tabs/series')
-    }
+    }*/
+      this.router.navigateByUrl('/tabs/home')
   }
   
 }
